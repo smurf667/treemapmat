@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="TreeMapMAT for Eclipse Memory Analyzer Tool" url="http://treemapmat.googlecode.com/svn/trunk/update">
+      Update Site for &quot;TreeMapMAT&quot;
+   </description>
+   <feature url="features/de.engehausen.treemap.mat_0.0.0.jar" id="de.engehausen.treemap.mat" version="0.0.0" />
+</site>
