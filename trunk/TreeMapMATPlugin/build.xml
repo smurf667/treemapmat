@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project name="TreeMapMAT Plugin" default="build" basedir=".">
+	
+	<property file="../TreeMapMATBuild/config.properties"/>
+	
+	<import file="paths.xml"/>
+			
+	<target name="build" description="Builds the eclipse plugin" depends="clean">
+		<mkdir dir="${build.dir.clz}"/>
+		<javac srcdir="src" destdir="${build.dir.clz}" source="1.6">
+			<classpath refid="plugins.path"/>
+		</javac>
+	</target>
+
+	<target name="clean" description="Cleans up the working directories">
+		<delete dir="${build.dir}" quiet="true"/>
+	</target>
+
+</project>

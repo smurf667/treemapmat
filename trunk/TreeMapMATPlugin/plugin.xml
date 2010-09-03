@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.mat.report.query">
+      <query
+            impl="de.engehausen.treemap.mat.query.HeapTreeMapQuery">
+      </query>
+   </extension>
+   <extension
+         point="org.eclipse.mat.ui.editorPanes">
+      <pane
+            class="de.engehausen.treemap.mat.ui.TreeMapPane"
+            id="de.engehausen.treemap.mat.ui.TreeMapPane">
+            <result type="de.engehausen.treemap.mat.query.IResultTreeModel"/>
+      </pane>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="de.engehausen.treemap.mat.preferences.TreeMapMATPreferences"
+            id="de.engehausen.treemap.mat.preferences.TreeMapMATPreferences"
+            name="TreeMapMAT">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="de.engehausen.treemap.mat.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

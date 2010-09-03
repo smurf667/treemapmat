@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="TreeMapMAT Build" default="build" basedir=".">
+	
+	<property file="config.properties"/>
+	
+	<import file="../TreeMapMATPlugin/paths.xml"/>
+	
+	<property name="jar" value="${build.dir}/plugins/de.engehausen.treemap.mat_${tmmat.version}.jar"/>
+	<property name="feature.jar" value="${build.dir}/features/de.engehausen.treemap.mat_${tmmat.version}.jar"/>
+
+	<target name="javadoc" description="Builds the javadoc">
+		<delete dir="${build.dir}/javadoc" quiet="yes"/>
+	    <javadoc access="public" packagenames="de.engehausen.treemap.mat.*" destdir="${build.dir}/javadoc">
+	    	<fileset dir="../TreeMapMATPlugin/" includes="src/**/*.java"/>
+	    	<classpath refid="plugins.path"/>
+		</javadoc>
+	</target>
+	
+	<target name="build" description="Builds the plugin and site" depends="clean">
+		<ant target="build" dir="../TreeMapMATPlugin"/>		
+		<mkdir dir="${build.dir.clz}"/>
+		<mkdir dir="${build.dir}/plugins"/>
+		<mkdir dir="${build.dir}/features"/>
+		<copydir dest="${build.dir.clz}" src="../TreeMapMATPlugin/${build.dir.clz}" />
+		<copy file="MANIFEST.MF" tofile="${build.dir}/manifest.txt"/>
+		<copy file="feature.xml" tofile="${build.dir}/feature.xml"/>
+		<copy file="site.xml" tofile="${build.dir}/site.xml"/>
+		<replaceregexp match="0\.0\.0" replace="${tmmat.version}" flags="g">
+			<fileset dir="${build.dir}">
+				<include name="manifest.txt"/>
+				<include name="feature.xml"/>
+				<include name="site.xml"/>
+			</fileset>
+		</replaceregexp>
+		<!-- build the plugin jar -->
+		<jar destfile="${jar}" manifest="${build.dir}/manifest.txt">
+			<fileset dir="${build.dir.clz}"/>
+		</jar>
+		<!-- build the feature jar -->
+		<jar destfile="${feature.jar}" basedir="${build.dir}" includes="feature.xml"/>
+		<!-- build the site zip -->		
+		<zip destfile="${build.dir}/de.engehausen.treemap.mat_${tmmat.version}_site.zip">
+			<fileset dir="${build.dir}">
+				<include name="site.xml"/>
+				<include name="**/*.jar"/>
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="clean" description="Cleans up the working directories">
+		<delete dir="${build.dir}" />
+		<ant target="clean" dir="../TreeMapMATPlugin"/>
+	</target>
+
+</project>
