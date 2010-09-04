@@ -10,7 +10,7 @@
 
 	<target name="javadoc" description="Builds the javadoc">
 		<delete dir="${build.dir}/javadoc" quiet="yes"/>
-	    <javadoc access="public" packagenames="de.engehausen.treemap.mat.*" destdir="${build.dir}/javadoc">
+	    <javadoc access="public" packagenames="de.engehausen.treemap.mat.*" destdir="${build.dir}/javadoc" header="v${tmmat.version}">
 	    	<fileset dir="../TreeMapMATPlugin/" includes="src/**/*.java"/>
 	    	<classpath refid="plugins.path"/>
 		</javadoc>
