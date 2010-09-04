@@ -21,10 +21,20 @@
 		<mkdir dir="${build.dir.clz}"/>
 		<mkdir dir="${build.dir}/plugins"/>
 		<mkdir dir="${build.dir}/features"/>
-		<copydir dest="${build.dir.clz}" src="../TreeMapMATPlugin/${build.dir.clz}" />
+		<copy todir="${build.dir.clz}">
+			<fileset dir="../TreeMapMATPlugin/${build.dir.clz}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.dir.clz}">
+			<fileset dir="../TreeMapMATPlugin/src">
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
 		<copy file="MANIFEST.MF" tofile="${build.dir}/manifest.txt"/>
 		<copy file="feature.xml" tofile="${build.dir}/feature.xml"/>
 		<copy file="site.xml" tofile="${build.dir}/site.xml"/>
+		<copy file="../TreeMapMATPlugin/plugin.xml" todir="${build.dir.clz}"/>
 		<replaceregexp match="0\.0\.0" replace="${tmmat.version}" flags="g">
 			<fileset dir="${build.dir}">
 				<include name="manifest.txt"/>
