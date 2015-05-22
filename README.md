@@ -9,7 +9,7 @@ Here is a screenshot:
 
 ![Screenshot](https://raw.githubusercontent.com/smurf667/treemapmat/master/javadoc/screenshots/heaptreemap_small.jpg)
 
-View in [big](https://raw.githubusercontent.com/smurf667/treemapmat/master/javadoc/screenshots/heaptreemap.png big]).
+View in [big](https://raw.githubusercontent.com/smurf667/treemapmat/master/javadoc/screenshots/heaptreemap.png).
 
 To obtain this view, click the "Open Query Browser" icon for an openend heap dump and select "Heap TreeMap" from the "Visualizations" category.
 
